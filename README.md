@@ -19,13 +19,13 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
 ### 初始化:
 
- 初始化一个**128-bit**的**MD**缓冲区，记为***<font color=red>CV<sub>q</sub></font>***，表示成4个32-bit寄存器（***<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>***)；***<font color=red>CV<sub>0</sub></font> = <font color=red>IV</font>***。迭代在**MD**缓冲区进行，最后一步的**128-bit**输出即为算法结果。
+ 初始化一个**128-bit**的**MD**缓冲区，记为表示成4个32-bit寄存器（A，B，C，D)；**<font color=red>CV<sub>0</sub></font> = <font color=red>IV</font>**。迭代在**MD**缓冲区进行，最后一步的**128-bit**输出即为算法结果。
 
-寄存器（***<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>***)置16进制初值作为初始向量***<font color=red>IV</font>***，并采用小端存储的存储结构.
+寄存器（**<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>**)置16进制初值作为初始向量**<font color=red>IV</font>**，并采用小端存储的存储结构.
 
 ### 循环压缩(H<sub>MD5</sub>):
 
-- **<font color=blue>H<sub>MD5</sub></font>** 从 ***<font color=red>CV</font>*** 输入128位，从消息分组输入512位，完成4大轮循环后，输出128位，用于下一轮输入的***<font color=red>CV</font>***值；
+- **<font color=blue>H<sub>MD5</sub></font>** 从 **<font color=red>CV</font>** 输入128位，从消息分组输入512位，完成4大轮循环后，输出128位，用于下一轮输入的**<font color=red>CV</font>**值；
 
 - 每轮循环分别固定不同的生成函数 F, G, H, I，这四个函数是32位非线性逻辑函数，再结合指定的 T 表元素 T[] 和消息分组的不同部分 X[] 做16次迭代运算，生成下一轮循环的输入；
 
@@ -39,9 +39,9 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
   每轮循环中的一次迭代运算逻辑：
 
-  对***<font color=red>A</font>***迭代： ***<font color=red>a</font> $\longleftarrow$ <font color=red>b</font> + ((<font color=red>a</font> + <font color=blue>g</font>(<font color=red>b</font>,<font color=red>c</font>,<font color=red>d</font>) + <font color=blue>X[k]</font> + <font color=red>T[i]</font> <<< <font color=red>s</font>)*** 
+  对**<font color=red>A</font>**迭代： **<font color=red>a</font> $\longleftarrow$ <font color=red>b</font> + ((<font color=red>a</font> + <font color=blue>g</font>(<font color=red>b</font>,<font color=red>c</font>,<font color=red>d</font>) + <font color=blue>X[k]</font> + <font color=red>T[i]</font> <<< <font color=red>s</font>)*** 
 
-​	缓冲区***（<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>，<font color=red>A</font>）$\longleftarrow$ (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)*** 
+​	缓冲区**（<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>，<font color=red>A</font>）$\longleftarrow$ (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)** 
 
 ​	◌  <font color=red>a, b, c, d</font>: MD缓冲区 (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)的当前值。 
 
