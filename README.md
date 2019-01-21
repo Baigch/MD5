@@ -11,7 +11,7 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
 ### 填充:
 
- 这一部分是在长度为 <font color=red>K</font> bits 的原始消息数据尾部填充长度为 <font color=red>P</font> bits 的标识100...0，$1<=P<=512$ (即至少要填充1个bit)，使得填充后的消息位数为：<font color=red>K</font> + <font color = red>P</font> $\equiv 448(mod \ 512)$ ；之后，再向上述填充好的消息尾部附加<font color=red>K</font>值的低64位(即<font color=red>K</font> $mod$ 2<sup>64</sup>)，最后得到一个长度位数为 <font color=red>K</font> + <font color = red>P</font> + 64 $\equiv0\ (mod\ 512)$的消息。
+ 这一部分是在长度为 <font color=red>K</font> bits 的原始消息数据尾部填充长度为 <font color=red>P</font> bits 的标识100...0，$1<=P<=512$ (即至少要填充1个bit)，使得填充后的消息位数为：<font color=red>K</font> + <font color = red>P</font> = 448(mod \ 512)$ ；之后，再向上述填充好的消息尾部附加<font color=red>K</font>值的低64位(即<font color=red>K</font> $mod$ 2<sup>64</sup>)，最后得到一个长度位数为 <font color=red>K</font> + <font color = red>P</font> + 64 $\equiv0\ (mod\ 512)$的消息。
 
 ### 分块:
 
@@ -21,7 +21,7 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
  初始化一个**128-bit**的**MD**缓冲区，记为表示成4个32-bit寄存器（A，B，C，D)；**<font color=red>CV<sub>0</sub></font> = <font color=red>IV</font>**。迭代在**MD**缓冲区进行，最后一步的**128-bit**输出即为算法结果。
 
-寄存器（**<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>**)置16进制初值作为初始向量**<font color=red>IV</font>**，并采用小端存储的存储结构.
+寄存器（<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)置16进制初值作为初始向量<font color=red>IV</font>，并采用小端存储的存储结构.
 
 ### 循环压缩(H<sub>MD5</sub>):
 
@@ -39,9 +39,9 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
   每轮循环中的一次迭代运算逻辑：
 
-  对**<font color=red>A</font>**迭代： **<font color=red>a</font> $\longleftarrow$ <font color=red>b</font> + ((<font color=red>a</font> + <font color=blue>g</font>(<font color=red>b</font>,<font color=red>c</font>,<font color=red>d</font>) + <font color=blue>X[k]</font> + <font color=red>T[i]</font> <<< <font color=red>s</font>)*** 
+  对<font color=red>A</font>迭代： <font color=red>a</font> --> <font color=red>b</font> + ((<font color=red>a</font> + <font color=blue>g</font>(<font color=red>b</font>,<font color=red>c</font>,<font color=red>d</font>) + <font color=blue>X[k]</font> + <font color=red>T[i]</font> <<< <font color=red>s</font>)
 
-​	缓冲区**（<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>，<font color=red>A</font>）$\longleftarrow$ (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)** 
+​	缓冲区（<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>，<font color=red>A</font>）--> (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)
 
 ​	◌  <font color=red>a, b, c, d</font>: MD缓冲区 (<font color=red>A</font>，<font color=red>B</font>，<font color=red>C</font>，<font color=red>D</font>)的当前值。 
 
@@ -55,23 +55,23 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
 ​	**各轮循环中第<font color=red>i</font>次迭代（<font color=red>i</font> = 1...16）使用的<font color=blue>X[k]</font>的确定：**
 
-​		设***<font color=red>j</font> = <font color=red>i</font>*** - 1:
+​		设<font color=red>j</font> = <font color=red>i</font> - 1:
 
-​		◌ 第一轮迭代：***<font color=blue>k</font> = <font color=red>j</font>***.
+​		◌ 第一轮迭代：<font color=blue>k</font> = <font color=red>j</font>
 
-​			• 顺序使用 ***<font color=blue>X</font>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15]***
+​			• 顺序使用 <font color=blue>X</font>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15]
 
-​		◌ 第2轮迭代:***<font color=blue>k</font> = (1 + 5<font color=red>j</font>) mod 16***.
-​			 • 顺序使用 ***<font color=blue>X</font>[1, 6,11, 0, 5,10,15, 4, 9,14, 3, 8,13, 2, 7,12]***
+​		◌ 第2轮迭代:<font color=blue>k</font> = (1 + 5<font color=red>j</font>) mod 16.
+​			 • 顺序使用 <font color=blue>X</font>[1, 6,11, 0, 5,10,15, 4, 9,14, 3, 8,13, 2, 7,12]
 
-​		◌ 第3轮迭代:***<font color=blue>k</font> = (5 + 3<font color=red>j</font>) mod 16***.
-​			 • 顺序使用 ***<font color=blue>X</font>[5, 8,11,14, 1, 4, 7,10,13, 0, 3, 6, 9,12,15, 2]***
+​		◌ 第3轮迭代:<font color=blue>k</font> = (5 + 3<font color=red>j</font>) mod 16.
+​			 • 顺序使用 <font color=blue>X</font>[5, 8,11,14, 1, 4, 7,10,13, 0, 3, 6, 9,12,15, 2]
 
-​		◌ 第4轮迭代:***<font color=blue>k</font> = 7<font color=red>j</font> mod 16***.
-​			 • 顺序使用 ***<font color=blue>X</font>[0, 7,14, 5,12, 3,10, 1, 8,15, 6,13, 4,11, 2, 9]***
+​		◌ 第4轮迭代:<font color=blue>k</font> = 7<font color=red>j</font> mod 16.
+​			 • 顺序使用 <font color=blue>X</font>[0, 7,14, 5,12, 3,10, 1, 8,15, 6,13, 4,11, 2, 9]
 
 ​	**各轮循环中使用的T值：**
-​		 ◌ ***<font color=red>T[i]</font>= int(2<sup>32</sup>x|sin(<font color=red>i</font>)|)*** 
+​		 ◌ **<font color=red>T[i]</font>= int(2<sup>32</sup>x|sin(<font color=red>i</font>)|)**
 
 ​			• int取整函数，sin正弦函数，以<font color=red>i</font>作为弧度输入
 
