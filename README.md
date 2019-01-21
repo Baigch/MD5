@@ -11,7 +11,7 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
 ### 填充:
 
- 这一部分是在长度为 <font color=red>K</font> bits 的原始消息数据尾部填充长度为 <font color=red>P</font> bits 的标识100...0，$1\leq$<font color=red>P</font>$\leq512$ (即至少要填充1个bit)，使得填充后的消息位数为：<font color=red>K</font> + <font color = red>P</font> $\equiv 448(mod \ 512)$ ；之后，再向上述填充好的消息尾部附加<font color=red>K</font>值的低64位(即<font color=red>K</font> $mod$ 2<sup>64</sup>)，最后得到一个长度位数为 <font color=red>K</font> + <font color = red>P</font> + 64 $\equiv0\ (mod\ 512)$的消息。
+ 这一部分是在长度为 <font color=red>K</font> bits 的原始消息数据尾部填充长度为 <font color=red>P</font> bits 的标识100...0，$1<=P<=512$ (即至少要填充1个bit)，使得填充后的消息位数为：<font color=red>K</font> + <font color = red>P</font> $\equiv 448(mod \ 512)$ ；之后，再向上述填充好的消息尾部附加<font color=red>K</font>值的低64位(即<font color=red>K</font> $mod$ 2<sup>64</sup>)，最后得到一个长度位数为 <font color=red>K</font> + <font color = red>P</font> + 64 $\equiv0\ (mod\ 512)$的消息。
 
 ### 分块:
 
@@ -33,9 +33,7 @@ MD5算法是一种输入任意不定长度的信息，通过求余、取余、�
 
 - 四轮压缩函数：
 
-  轮函数**g**是32位的非线性逻辑函数，在每一轮中的定义如下：
-
-  ![image-20181208155129224](/Users/lightbai/Library/Application%20Support/typora-user-images/image-20181208155129224.png)
+  轮函数**g**是32位的非线性逻辑函数
 
 - 迭代运算：
 
