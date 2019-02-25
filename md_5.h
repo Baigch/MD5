@@ -2,8 +2,8 @@
 //  md_5.h
 //  MD5
 //
-//  Created by 白光程 on 2018/12/1.
-//  Copyright © 2018 白光程. All rights reserved.
+//  Created by Baigch on 2018/12/1.
+//  Copyright © 2018 Baigch. All rights reserved.
 //
 #ifndef md_5_h
 #define md_5_h
